@@ -171,15 +171,15 @@ static int waitForClientOrChef()
 
     /* insert your code here */
        if (sh->fSt.foodRequest != 0){
-        ret = 1;
+        ret = FOODREQ;
     }
 
     if (sh->fSt.foodReady != 0){
-        ret = 2;
+        ret = FOODREADY;
     }
 
     if (sh->fSt.paymentRequest != 0){
-        ret = 3;
+        ret = BILL;
     }
 
     if (semUp (semgid, sh->mutex) == -1) {                                                  /* exit critical region */
