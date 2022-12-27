@@ -184,6 +184,7 @@ static bool waitFriends(int id)
     if (fSt.tableClients == TABLESIZE){
         int lastID = id;
         sh->friendsArrived  = FRIENDSARRIVED;
+        sh->fSt.st.clientStat[firstID] = READY_TO_ORDER;
     }
 
     if (semUp (semgid, sh->mutex) == -1)                                                      /* exit critical region */
@@ -215,7 +216,7 @@ static void orderFood (int id)
     }
 
     /* insert your code here */
-    if (sh->friendsArrived  == FRIENDSARRIVED){
+    if (sh->fSt.st.clientStat[firstID] == READY_TO_ORDER){
         sh->fSt.st.clientStat[id] = ORDERING;
         saveState(nFic,&sh->fSt);
     }
@@ -293,7 +294,7 @@ static void waitAndPay (int id)
     /* insert your code here */
     sh->fSt.st.clientStat[id] = WAITING;
 
-    if (id == ){
+    if (id == lastID){
         last = true;
     }
 
