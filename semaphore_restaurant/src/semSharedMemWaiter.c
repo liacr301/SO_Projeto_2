@@ -155,12 +155,12 @@ static int waitForClientOrChef()
 
     /* insert your code here */
     sh->fSt.st.waiterStat =  WAITING_CLIENT;
-    if (sh->fSt.st.clientStat[id] == ORDERING){
+    if (sh->fSt.st.clientStat[firstID] == ORDERING){
         sh->fSt.foodRequest++;
         ret = FOODREQ;
     }
 
-    if ( == PAYING){
+    if (sh->fSt.st.clientStat[lastID] == PAYING){
         if (sh->fSt.paymentRequest != 0){
             ret = BILL;
         }
