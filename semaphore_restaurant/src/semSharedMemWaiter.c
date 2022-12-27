@@ -198,6 +198,10 @@ static void informChef ()
     }
 
     /* insert your code here */
+    if (semDown(semgid, sh->waiterRequest) == -1)
+    { perror ("error on the down operation for semaphore access (WT)");
+        exit (EXIT_FAILURE);
+    }
 }
 
 /**
