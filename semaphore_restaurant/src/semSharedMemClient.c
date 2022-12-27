@@ -170,17 +170,19 @@ static bool waitFriends(int id)
     /* insert your code here */
 
     sh->fSt.tableClients++
-    /* COMO FAZER PARA IDENTIFICAR O PRIMEIRO CLIENTE? */
-    if (id == ){ 
+        
+    if (fSt.tableClients == 1){
+        int firstID = id;
+    }
+    if (id == firstID){ 
         first = true;
     }
 
     sh->fSt.st.clientStat[id] = WAITING;
     saveState(nFic,&sh->fSt);
 
-    /* IDENTIFICAR O ÚLTIMO CLIENTE???*/
-    if (){
-        /* PARAR DE ESPERAR????*/
+    if (fSt.tableClients == TABLESIZE){
+        int lastID = id;
         sh->friendsArrived  = FRIENDSARRIVED;
     }
 
@@ -190,7 +192,7 @@ static bool waitFriends(int id)
     }
 
     /* insert your code here */
-    usleep((200.0*random())/(RAND_MAX+1.0)+60.0)
+ 
     return first;
 }
 
@@ -225,7 +227,6 @@ static void orderFood (int id)
     }
 
     /* insert your code here */
-    usleep((200.0*random())/(RAND_MAX+1.0)+60.0)
 }
 
 /**
@@ -255,7 +256,6 @@ static void waitFood (int id)
     }
 
     /* insert your code here */
-    usleep((200.0*random())/(RAND_MAX+1.0)+60.0)
 
     if (semDown (semgid, sh->mutex) == -1) {                                                  /* enter critical region */
         perror ("error on the down operation for semaphore access (CT)");
